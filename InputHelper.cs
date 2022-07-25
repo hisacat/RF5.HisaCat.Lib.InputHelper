@@ -92,6 +92,18 @@ namespace RF5.HisaCat.Lib.InputHelper
         {
             return RF5SteamInput.SteamInputManager.GetCursorPos(out lpPoint);
         }
+        public static bool GetCursorPos(out UnityEngine.Vector2Int position)
+        {
+            RF5SteamInput.SteamInputManager.POINT lpPoint;
+            if(RF5SteamInput.SteamInputManager.GetCursorPos(out lpPoint))
+            {
+                position = new UnityEngine.Vector2Int(lpPoint.X, lpPoint.Y);
+                return true;
+            }
+            position = default;
+            return false;
+        }
+
         public static UnityEngine.CursorLockMode GetOptionMouseCursorLockMode()
         {
             return RF5SteamInput.SteamInputManager.GetOptionMouseCursorLockMode();
